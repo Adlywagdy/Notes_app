@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/Noteitem.dart';
+import 'package:notes_app/widgets/custombottomsheet.dart';
 import 'package:notes_app/widgets/customicon.dart';
 
 class NotesPage extends StatelessWidget {
@@ -13,15 +14,24 @@ class NotesPage extends StatelessWidget {
           'Notes',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        actions: [CustomIcon()],
+        actions: [const CustomIcon()],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(child: NoteItem()),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return const NoteItem();
+        },
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.tealAccent,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return CustomBottomSheet();
+            },
+          );
+        },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         child: const Icon(Icons.add, color: Colors.black),
       ),

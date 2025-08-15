@@ -6,6 +6,7 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(8),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.blueGrey,
@@ -37,35 +38,3 @@ class NoteItem extends StatelessWidget {
     );
   }
 }
-
-/*
-Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                Text(
-                  'Note Title',
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                ),
-                Text('Note Content', style: TextStyle(fontSize: 18)),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.delete, size: 30),
-                ),
-                Text('Note date'),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
- */
