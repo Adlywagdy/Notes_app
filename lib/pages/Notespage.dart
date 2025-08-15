@@ -14,7 +14,7 @@ class NotesPage extends StatelessWidget {
           'Notes',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        actions: [const CustomIcon()],
+        actions: [const CustomIcon(icon: Icons.search)],
       ),
       body: ListView.builder(
         itemCount: 10,
