@@ -2,21 +2,22 @@ import 'package:flutter/material.dart';
 
 class Customtextformfield extends StatelessWidget {
   final String labelText;
-  final double verticalPadding;
-  final double horizontalPadding;
+
+  final int? maxLines;
   final void Function(String)? onFieldSubmitted;
 
   const Customtextformfield({
     super.key,
     required this.labelText,
-    this.verticalPadding = 0,
-    this.horizontalPadding = 10,
+
     this.onFieldSubmitted,
+    this.maxLines = 1,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter this field';
@@ -28,10 +29,6 @@ class Customtextformfield extends StatelessWidget {
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.tealAccent),
 
-        contentPadding: EdgeInsets.symmetric(
-          vertical: verticalPadding,
-          horizontal: horizontalPadding,
-        ),
         border: OutlineInputBorder(),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.tealAccent),
