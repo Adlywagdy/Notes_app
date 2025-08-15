@@ -6,14 +6,14 @@ class CustomIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 40,
       width: 40,
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
 
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: Colors.grey.withValues(alpha: .5),
 
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: IconButton(
         onPressed: () {},

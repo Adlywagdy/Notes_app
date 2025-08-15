@@ -19,6 +19,12 @@ class NotesPage extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Center(child: NoteItem()),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.tealAccent,
+        onPressed: () {},
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        child: const Icon(Icons.add, color: Colors.black),
+      ),
     );
   }
 }
