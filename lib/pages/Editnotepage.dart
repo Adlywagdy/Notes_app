@@ -16,7 +16,13 @@ class EditNotePage extends StatefulWidget {
 }
 
 class _EditNotePageState extends State<EditNotePage> {
-  int currentindex = 0;
+  late int currentindex;
+  @override
+  void initState() {
+    super.initState();
+    currentindex = colors.indexOf(widget.thenote.theColor);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
