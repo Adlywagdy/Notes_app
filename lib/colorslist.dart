@@ -1,0 +1,8 @@
+List<int> colors = [
+  0xff607d8b,
+  0xfff44336,
+  0xff4caf50,
+  0xff2196f3,
+  0xffffeb3b,
+  0xfff57c00,
+];

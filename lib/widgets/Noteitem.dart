@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notecubit/notescubit.dart';
+import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/pages/Editnotepage.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  final NoteModel thenote;
+  const NoteItem({super.key, required this.thenote});
 
   @override
   Widget build(BuildContext context) {
@@ -10,14 +14,16 @@ class NoteItem extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => EditNotePage()),
+          MaterialPageRoute(
+            builder: (context) => EditNotePage(thenote: thenote),
+          ),
         );
       },
       child: Container(
         margin: EdgeInsets.all(8),
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.blueGrey,
+          color: Color(thenote.theColor),
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -25,12 +31,19 @@ class NoteItem extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
-                'Note Title',
+                thenote.title,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
-              subtitle: Text('Note Content', style: TextStyle(fontSize: 18)),
+              subtitle: Text(thenote.content, style: TextStyle(fontSize: 18)),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await thenote.delete();
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Note deleted successfully!')),
+                  );
+                  BlocProvider.of<NotesCubit>(context).getAllNotes();
+                },
                 icon: Icon(Icons.delete, size: 30),
               ),
             ),
@@ -41,7 +54,7 @@ class NoteItem extends StatelessWidget {
                   horizontal: 16,
                   vertical: 8,
                 ),
-                child: Text('Note date'),
+                child: Text(thenote.date),
               ),
             ),
           ],

@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 
 class Customtextformfield extends StatelessWidget {
   final String labelText;
-
+  final void Function(String?)? onSaved;
   final int? maxLines;
-  final void Function(String)? onFieldSubmitted;
-
+  final String? hint;
+  final void Function(String)? onChanged;
   const Customtextformfield({
     super.key,
     required this.labelText,
-
-    this.onFieldSubmitted,
+    this.hint,
     this.maxLines = 1,
+    this.onSaved,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
+      onSaved: onSaved,
       maxLines: maxLines,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -24,11 +27,11 @@ class Customtextformfield extends StatelessWidget {
         }
         return null;
       },
-      onFieldSubmitted: onFieldSubmitted,
+
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.tealAccent),
-
+        hint: Text(hint ?? ''),
         border: OutlineInputBorder(),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.tealAccent),
